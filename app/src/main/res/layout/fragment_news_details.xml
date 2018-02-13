@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="news.ta.com.news.feature.newsdetail.NewsDetailsViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrollContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:show="@{!viewModel.blankContent}">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <news.ta.com.news.common.view.SquareImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_places_holder"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_news"
+                        app:url="@{viewModel.item.thumbnail}"/>
+
+
+                    <TextView
+                        style="@style/News.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/headline_bg"
+                        android:paddingBottom="@dimen/gap_m"
+                        android:paddingLeft="@dimen/gap_m"
+                        android:paddingRight="@dimen/gap_m"
+                        android:paddingTop="@dimen/gap_xl"
+                        android:text="@{viewModel.item.headline}"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        tools:text="news\nthe 2ns lines of headline"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/News.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_globe_16"
+                    android:drawablePadding="@dimen/gap_s"
+                    android:drawableStart="@drawable/ic_globe_16"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/gap_m"
+                    android:text="@{viewModel.item.source}"
+                    tools:text="source"/>
+
+                <TextView
+                    style="@style/News.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/gap_m"
+                    android:text="@{viewModel.item.description}"
+                    tools:text="Content"/>
+
+                <ImageView
+                    android:src="@drawable/ic_divider"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/gap_l"
+                    android:layout_marginBottom="@dimen/gap_xl"
+                    android:layout_gravity="center"
+                    android:layout_height="@dimen/gap_m"/>
+
+                <Button
+                    style="@style/News.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:onClick="@{viewModel.onClickReadMore}"
+                    android:text="@string/read_full_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:show="@{viewModel.blankContent}"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_news"/>
+
+            <TextView
+                style="@style/News.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_news_desc"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</layout>

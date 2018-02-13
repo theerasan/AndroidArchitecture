@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "totalResults": 20,
+  "articles":  [
+    {
+      "source": {
+        "id": "cnn",
+        "name": "CNN"
+      },
+      "author": "Kelly McCleary, Rene Marsh, Joe Sutton and Susannah Cullinane, CNN",
+      "title": "3 killed in Grand Canyon sightseeing helicopter crash",
+      "description": "Four survivors of a deadly helicopter crash in the Grand Canyon Saturday evening were rescued during an operation that stretched into the early hours of Sunday morning, according to Police Chief Francis E. Bradley Sr. of the Hualapai reservation.",
+      "url": "https://www.cnn.com/2018/02/10/us/grand-canyon-helicopter-crash/index.html",
+      "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/180211031159-grand-canyon-fatal-helicopter-crash-super-tease.jpg",
+      "publishedAt": "2018-02-11T15:08:36Z"
+    }
+  ]
+}

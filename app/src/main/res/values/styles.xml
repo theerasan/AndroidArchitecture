@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="News" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+        <item name="android:windowContentTransitions" tools:ignore="NewApi">true</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_up</item>
+    </style>
+
+    <style name="News.Title" parent="@style/Base.TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+    </style>
+
+    <style name="News.Body" parent="@style/Base.TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+    </style>
+
+    <style name="News.Caption" parent="@style/Base.TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+    </style>
+
+    <style name="News.Appbar">
+        <item name="android:background">@drawable/title_bg</item>
+    </style>
+
+</resources>

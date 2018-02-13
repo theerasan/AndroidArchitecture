@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hot News</string>
+    <string name="read_full_content">Read full content</string>
+    <string name="empty_news_desc">Please select news for the list</string>
+</resources>

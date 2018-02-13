@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gap_xxl">128dp</dimen>
+    <dimen name="gap_xl">64dp</dimen>
+    <dimen name="gap_l">32dp</dimen>
+    <dimen name="gap_m">16dp</dimen>
+    <dimen name="gap_s">5dp</dimen>
+    <dimen name="gap_xs">4dp</dimen>
+    <dimen name="imageSize">100dp</dimen>
+    <dimen name="gap_none">0dp</dimen>
+    <dimen name="line">1dp</dimen>
+</resources>

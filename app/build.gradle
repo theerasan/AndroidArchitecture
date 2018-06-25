@@ -52,7 +52,7 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation "com.android.support:multidex:$multidex_version"
 
     // Android Architecture
@@ -63,11 +63,11 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$support_version"
 
     // Kotlin binding
-    kapt 'com.android.databinding:compiler:3.0.1'
+    kapt "com.android.databinding:compiler:$gradle_plugin_version"
 
     // Image loader
-    implementation 'com.github.bumptech.glide:glide:4.3.1'
-    kapt 'com.github.bumptech.glide:compiler:4.3.1'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
 
     // Service call
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -94,8 +94,8 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testImplementation "de.jodamob.kotlin:kotlin-runner-junit4:$kotlin_test_runner_version"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation "android.arch.core:core-testing:$acc_extensions_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 }

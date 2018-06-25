@@ -34,7 +34,7 @@ class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding)
             adapter = NewsListAdapter(binding.viewModel!!)
         }
 
-        binding.viewModel?.hasDetailView = fragment.arguments.getBoolean(HAS_DETAIL, false)
+        binding.viewModel?.hasDetailView = fragment.arguments!!.getBoolean(HAS_DETAIL, false)
     }
 
     override fun setItems(items: List<NewsItem>?) {

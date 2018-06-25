@@ -9,8 +9,8 @@ import news.ta.com.news.feature.newsdetail.NewsDetailsViewModel
 
 class NewsListBinder(fragment: Fragment, binding: FragmentNewsListBinding) {
 
-    val viewModel: NewsListViewModel = ViewModelProviders.of(fragment.activity).get(NewsListViewModel::class.java)
-    val detailViewModel = ViewModelProviders.of(fragment.activity).get(NewsDetailsViewModel::class.java)
+    val viewModel: NewsListViewModel = ViewModelProviders.of(fragment.activity!!).get(NewsListViewModel::class.java)
+    val detailViewModel = ViewModelProviders.of(fragment.activity!!).get(NewsDetailsViewModel::class.java)
     val view: NewsListView
     val router: NewsListRouter = NewsListRouterImpl(binding.root.context)
 

@@ -2,9 +2,9 @@ package news.ta.com.news.feature.newsdetail
 
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Window
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ActivityNewsDetailsBinding

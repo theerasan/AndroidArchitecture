@@ -1,6 +1,6 @@
 package news.ta.com.news.feature.main
 
-import android.support.v4.widget.NestedScrollView
+import androidx.core.widget.NestedScrollView
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ActivityMainBinding
 

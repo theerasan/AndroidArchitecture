@@ -1,9 +1,9 @@
 package news.ta.com.news.feature.main
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
 import news.ta.com.news.databinding.ActivityMainBinding
 import news.ta.com.news.feature.newsdetail.NewsDetailsViewModel
 

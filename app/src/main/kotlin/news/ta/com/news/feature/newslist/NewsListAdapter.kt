@@ -1,14 +1,14 @@
 package news.ta.com.news.feature.newslist
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ItemNewsBinding
 
-class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
+class NewsListAdapter(val viewModel: NewsListViewModel) : androidx.recyclerview.widget.RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
 
     var items: List<NewsItem> = emptyList()
         set(value) {
@@ -33,7 +33,7 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<N
 
     override fun getItemId(position: Int): Long = items[position].id.toLong()
 
-    inner class NewsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    inner class NewsViewHolder(itemView: View?) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val binding: ItemNewsBinding? = itemView?.let { DataBindingUtil.bind(it) }
 
         fun bind(item: NewsItem) {

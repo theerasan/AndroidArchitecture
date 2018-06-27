@@ -1,6 +1,6 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import news.ta.com.news.feature.newslist.NewsItem
 import org.amshove.kluent.mock
 import org.amshove.kluent.shouldBe

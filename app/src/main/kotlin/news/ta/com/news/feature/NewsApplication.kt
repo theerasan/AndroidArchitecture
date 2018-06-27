@@ -1,6 +1,6 @@
 package news.ta.com.news.feature
 
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import news.ta.com.news.di.ApplicationComponent
 import news.ta.com.news.di.ContextModule
 import news.ta.com.news.di.DaggerApplicationComponent

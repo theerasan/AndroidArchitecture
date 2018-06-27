@@ -1,6 +1,6 @@
 package news.ta.com.news.common
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide

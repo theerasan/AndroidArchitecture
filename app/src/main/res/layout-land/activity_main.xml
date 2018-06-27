@@ -9,17 +9,17 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:baselineAligned="false">
 
-            <android.support.design.widget.CoordinatorLayout
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:background="@color/list_bg"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
-                <android.support.design.widget.AppBarLayout
+                <com.google.android.material.appbar.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <android.support.v7.widget.Toolbar
+                    <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         app:titleTextColor="@color/white"
                         app:title="@string/app_name"
@@ -27,14 +27,14 @@
                         android:layout_height="wrap_content"
                         style="@style/News.Appbar"/>
 
-                </android.support.design.widget.AppBarLayout>
+                </com.google.android.material.appbar.AppBarLayout>
 
                 <FrameLayout
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     android:id="@+id/list_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-            </android.support.design.widget.CoordinatorLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
             <FrameLayout
                 android:id="@+id/detail"

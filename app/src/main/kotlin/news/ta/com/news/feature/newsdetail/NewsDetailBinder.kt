@@ -1,12 +1,12 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v4.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.FragmentActivity
 import news.ta.com.news.databinding.FragmentNewsDetailsBinding
 
-class NewsDetailBinder(activity: FragmentActivity, binding: FragmentNewsDetailsBinding) {
+class NewsDetailBinder(activity: androidx.fragment.app.FragmentActivity, binding: FragmentNewsDetailsBinding) {
 
     val viewModel = ViewModelProviders.of(activity).get(NewsDetailsViewModel::class.java)
     val router: NewsDetailRouter = NewsDetailRouterImpl(binding.root.context)

@@ -1,6 +1,6 @@
 package news.ta.com.news.feature.newslist
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.verify
 import news.ta.com.news.feature.TestEnvironmentBuilder
 import news.ta.com.news.model.ArticleDTO

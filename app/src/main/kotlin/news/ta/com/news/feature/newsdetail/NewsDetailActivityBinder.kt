@@ -1,7 +1,7 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
 import news.ta.com.news.databinding.ActivityNewsDetailsBinding
 
 class NewsDetailActivityBinder(activity: AppCompatActivity, binding: ActivityNewsDetailsBinding?) {

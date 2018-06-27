@@ -1,18 +1,18 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.FragmentNewsDetailsBinding
 
-class NewsDetailFragment : Fragment() {
+class NewsDetailFragment : androidx.fragment.app.Fragment() {
     private lateinit var binder: NewsDetailBinder
     companion object {
-        fun newInstance(): Fragment = NewsDetailFragment()
+        fun newInstance(): androidx.fragment.app.Fragment = NewsDetailFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

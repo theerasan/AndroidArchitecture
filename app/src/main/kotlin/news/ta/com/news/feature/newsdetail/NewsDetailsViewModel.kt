@@ -1,7 +1,7 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableField
 import android.view.View
 import news.ta.com.news.common.livedata.SingleLiveEvent
 import news.ta.com.news.common.onValueChange

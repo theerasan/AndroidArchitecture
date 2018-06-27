@@ -5,7 +5,7 @@ import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldNotBe
 import org.junit.Before
 import org.junit.Test
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import news.ta.com.news.feature.TestEnvironmentBuilder
 import org.junit.rules.TestRule
 import org.junit.Rule

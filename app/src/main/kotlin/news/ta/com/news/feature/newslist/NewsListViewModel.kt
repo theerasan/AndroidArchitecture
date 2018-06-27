@@ -1,8 +1,8 @@
 package news.ta.com.news.feature.newslist
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
 import news.ta.com.news.common.livedata.SingleLiveEvent
 import news.ta.com.news.feature.NewsApplication
 import java.io.Serializable

@@ -1,6 +1,6 @@
 package news.ta.com.news.feature.newsdetail
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import news.ta.com.news.common.replaceWith
 import news.ta.com.news.databinding.ActivityNewsDetailsBinding
 import news.ta.com.news.feature.newslist.NewsItem

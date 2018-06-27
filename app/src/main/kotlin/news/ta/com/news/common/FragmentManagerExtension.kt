@@ -1,9 +1,9 @@
 package news.ta.com.news.common
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
-fun FragmentManager.replaceWith(id: Int?, fragment: Fragment, tag: String? = null) {
+fun androidx.fragment.app.FragmentManager.replaceWith(id: Int?, fragment: androidx.fragment.app.Fragment, tag: String? = null) {
     if (id == null) return
     this.beginTransaction().replace(id, fragment, tag).setTransition(android.R.anim.fade_in).commit()
 }

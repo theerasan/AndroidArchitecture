@@ -1,7 +1,7 @@
 package news.ta.com.news.common
 
-import android.databinding.Observable
-import android.databinding.ObservableField
+import androidx.databinding.Observable
+import androidx.databinding.ObservableField
 
 fun <T> ObservableField<T>.onValueChange(callback: (T) -> Unit) {
     val that = this

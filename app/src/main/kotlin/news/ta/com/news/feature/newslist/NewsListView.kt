@@ -1,8 +1,8 @@
 package news.ta.com.news.feature.newslist
 
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dgreenhalgh.android.simpleitemdecoration.linear.DividerItemDecoration
 import com.dgreenhalgh.android.simpleitemdecoration.linear.EndOffsetItemDecoration
 import com.dgreenhalgh.android.simpleitemdecoration.linear.StartOffsetItemDecoration
@@ -14,7 +14,7 @@ interface NewsListView {
     fun setItems(items: List<NewsItem>?)
 }
 
-class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding) : NewsListView {
+class NewsListViewImpl(fragment: androidx.fragment.app.Fragment, val binding: FragmentNewsListBinding) : NewsListView {
 
     init {
         with(binding.list) {
@@ -29,7 +29,7 @@ class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding)
             setHasFixedSize(true)
 
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
 
             adapter = NewsListAdapter(binding.viewModel!!)
         }

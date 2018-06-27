@@ -11,7 +11,7 @@ interface MainRouter {
     fun showDetail()
 }
 
-class MainRouterImpl(val fm: androidx.fragment.app.FragmentManager, val binding: ActivityMainBinding?) : MainRouter {
+class MainRouterImpl(val fm: FragmentManager, val binding: ActivityMainBinding?) : MainRouter {
     override fun showList() {
         fm.replaceWith(binding?.listItem?.id, NewsListFragment.newInstance(binding?.detail != null))
     }

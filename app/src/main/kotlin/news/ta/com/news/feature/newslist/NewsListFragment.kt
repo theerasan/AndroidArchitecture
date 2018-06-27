@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.FragmentNewsListBinding
 
-class NewsListFragment : androidx.fragment.app.Fragment() {
+class NewsListFragment : Fragment() {
 
     private lateinit var binder: NewsListBinder
 
@@ -17,7 +17,7 @@ class NewsListFragment : androidx.fragment.app.Fragment() {
 
         val HAS_DETAIL = "news.ta.com.news.feature.newslist.HAS_DETAIL"
 
-        fun newInstance(hasDetail: Boolean): androidx.fragment.app.Fragment {
+        fun newInstance(hasDetail: Boolean): Fragment {
             val fragment = NewsListFragment()
             val bundle = Bundle()
             bundle.putSerializable(HAS_DETAIL, hasDetail)

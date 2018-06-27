@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.fragment.app.FragmentActivity
 import news.ta.com.news.databinding.FragmentNewsDetailsBinding
 
-class NewsDetailBinder(activity: androidx.fragment.app.FragmentActivity, binding: FragmentNewsDetailsBinding) {
+class NewsDetailBinder(activity: FragmentActivity, binding: FragmentNewsDetailsBinding) {
 
     val viewModel = ViewModelProviders.of(activity).get(NewsDetailsViewModel::class.java)
     val router: NewsDetailRouter = NewsDetailRouterImpl(binding.root.context)

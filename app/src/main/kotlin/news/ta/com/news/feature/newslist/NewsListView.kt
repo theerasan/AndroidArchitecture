@@ -14,7 +14,7 @@ interface NewsListView {
     fun setItems(items: List<NewsItem>?)
 }
 
-class NewsListViewImpl(fragment: androidx.fragment.app.Fragment, val binding: FragmentNewsListBinding) : NewsListView {
+class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding) : NewsListView {
 
     init {
         with(binding.list) {

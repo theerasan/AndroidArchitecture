@@ -12,7 +12,7 @@ class NewsDetailActivityViewImpl(activity: AppCompatActivity, binding: ActivityN
 
     init {
         with(activity) {
-            supportFragmentManager.replaceWith(binding?.detail?.id, news.ta.com.news.feature.newsdetail.NewsDetailFragment.newInstance())
+            supportFragmentManager.replaceWith(binding?.detail?.id, NewsDetailFragment.newInstance())
             setSupportActionBar(binding?.toolbar)
             kotlin.with(this.supportActionBar) {
                 this?.setDisplayHomeAsUpEnabled(true)

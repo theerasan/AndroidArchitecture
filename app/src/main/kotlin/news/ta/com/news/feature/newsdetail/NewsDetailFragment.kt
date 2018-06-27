@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.FragmentNewsDetailsBinding
 
-class NewsDetailFragment : androidx.fragment.app.Fragment() {
+class NewsDetailFragment : Fragment() {
     private lateinit var binder: NewsDetailBinder
     companion object {
         fun newInstance(): androidx.fragment.app.Fragment = NewsDetailFragment()

@@ -33,8 +33,8 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : androidx.recyclerview.
 
     override fun getItemId(position: Int): Long = items[position].id.toLong()
 
-    inner class NewsViewHolder(itemView: View?) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        val binding: ItemNewsBinding? = itemView?.let { DataBindingUtil.bind(it) }
+    inner class NewsViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+        val binding: ItemNewsBinding? = itemView.let { DataBindingUtil.bind(it) }
 
         fun bind(item: NewsItem) {
             binding?.item = item

@@ -43,7 +43,7 @@ public class SingleLiveEvent<T> extends MutableLiveData<T> {
     private final AtomicBoolean mPending = new AtomicBoolean(false);
 
     @MainThread
-    public void observe(LifecycleOwner owner, final Observer<T> observer) {
+    public void observe(LifecycleOwner owner, final Observer<? super T> observer) {
 
         if (hasActiveObservers()) {
             Log.w(TAG, "Multiple observers registered but only one will be notified of changes.");

@@ -20,7 +20,7 @@ class NewsListBinder(fragment: Fragment, binding: FragmentNewsListBinding) {
     }
 
     fun bindTo(owner: LifecycleOwner) {
-        viewModel.items.observe(owner, Observer { view.setItems(it) })
+        viewModel.items.observe(owner, Observer { view.setItems(it); viewModel.setStatic(it) })
         viewModel.showDetailMediator.observe(owner, Observer { view.setSelectedItem(it!!.id.toLong()); router.showDetail(detailViewModel, it) })
         viewModel.gotoDetailMediator.observe(owner, Observer { router.gotoDetail(it) })
     }

@@ -4,7 +4,10 @@ import android.view.MotionEvent
 import android.view.MotionEvent.ACTION_UP
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.selection.*
+import androidx.recyclerview.selection.ItemDetailsLookup
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StableIdKeyProvider
+import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

@@ -42,4 +42,8 @@ class NewsListViewModel : ViewModel() {
     private fun afterGotoDetail() {
         gotoDetailMediator.value = null
     }
+
+    fun setStatic(list: List<NewsItem>?) {
+        NewsApplication.news = list?.get(0)
+    }
 }

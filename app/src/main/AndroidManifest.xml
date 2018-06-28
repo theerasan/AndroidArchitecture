@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="news.ta.com.news">
+    package="news.ta.com.news">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".feature.NewsApplication"
@@ -16,21 +16,34 @@
             android:name=".feature.main.MainActivity"
             android:theme="@style/News">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".feature.newsdetail.NewsDetailActivity"
-            android:theme="@style/News">
-
-        </activity>
+            android:theme="@style/News"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"/>
+            android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name=".slice.NewsSlice"
+            android:authorities="news.ta.com.news"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.app.slice.category.SLICE" />
+
+                <data
+                    android:host="news.ta.com.news"
+                    android:pathPrefix="/newsslice"
+                    android:scheme="http" />
+            </intent-filter>
+        </provider>
     </application>
 
 </manifest>

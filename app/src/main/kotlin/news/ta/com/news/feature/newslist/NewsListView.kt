@@ -29,7 +29,7 @@ class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding)
             setHasFixedSize(true)
 
             setHasFixedSize(true)
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context)
 
             adapter = NewsListAdapter(binding.viewModel!!)
         }

@@ -1,5 +1,6 @@
 package news.ta.com.news.feature.newslist
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
@@ -29,6 +30,8 @@ class NewsListViewModel : ViewModel() {
 
     val showDetailMediator = MediatorLiveData<NewsItem?>()
     val gotoDetailMediator = MediatorLiveData<NewsItem?>()
+
+    val selectedCount = ObservableField<String>("0")
 
     init {
         NewsApplication.applicationComponent.inject(this)

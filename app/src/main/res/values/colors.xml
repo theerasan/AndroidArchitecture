@@ -10,5 +10,6 @@
     <color name="line">#e6e1ec</color>
     <color name="titleEnd">#b923ff</color>
     <color name="titleStart">@color/colorPrimary</color>
+    <color name="selectedBackground">#7d1b61ff</color>
     <color name="list_bg">#f6f4fa</color>
 </resources>

@@ -57,7 +57,6 @@ open class NetworkModule {
         var request = chain.request()
 
         request = request.newBuilder()
-                .header("Authorization", "Bearer " + BuildConfig.NEWS_API_KEY)
                 .build()
 
         chain.proceed(request)

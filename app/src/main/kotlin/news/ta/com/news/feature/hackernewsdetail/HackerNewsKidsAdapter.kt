@@ -1,4 +1,4 @@
-package news.ta.com.news.feature.hackernewslist
+package news.ta.com.news.feature.hackernewsdetail
 
 import android.databinding.DataBindingUtil
 import android.support.v4.app.FragmentActivity
@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ItemHackerNewsBinding
+import news.ta.com.news.feature.hackernewslist.HackerNewsItem
+import news.ta.com.news.feature.hackernewslist.HackerNewsViewModel
 import news.ta.com.news.feature.hackernewslist.hackernewsitem.HackerNewsItemBinder
 import news.ta.com.news.feature.hackernewslist.hackernewsitem.HackerNewsItemViewModel
 
-class HackerNewsListAdapter(val viewModel: HackerNewsViewModel, val activity: FragmentActivity) : RecyclerView.Adapter<HackerNewsListAdapter.HackerNewsViewHolder>() {
+class HackerNewsKidsAdapter(val viewModel: HackerNewsViewModel, val activity: FragmentActivity) : RecyclerView.Adapter<HackerNewsKidsAdapter.HackerNewsViewHolder>() {
 
     var items: List<HackerNewsItem> = emptyList()
         set(value) {
@@ -42,10 +44,10 @@ class HackerNewsListAdapter(val viewModel: HackerNewsViewModel, val activity: Fr
         val binding: ItemHackerNewsBinding? = itemView?.let { DataBindingUtil.bind(it) }
 
         fun bind(item: HackerNewsItem) {
-            val viewModel = HackerNewsItemViewModel(item.id)
+            val viewModel = HackerNewsItemViewModel(item.id, true)
             val binder = HackerNewsItemBinder(activity, viewModel)
             binding?.listener = View.OnClickListener {
-                this@HackerNewsListAdapter.viewModel.itemClickEvent.value = item
+                this@HackerNewsKidsAdapter.viewModel.itemClickEvent.value = item
             }
 
             binding?.viewModel = viewModel

@@ -2,7 +2,9 @@ package news.ta.com.news.di
 
 import com.google.gson.Gson
 import dagger.Component
+import news.ta.com.news.feature.hackernewsdetail.HackerNewsDetailViewModel
 import news.ta.com.news.feature.hackernewslist.HackerNewsViewModel
+import news.ta.com.news.feature.hackernewslist.hackernewsitem.HackerNewsItemViewModel
 import news.ta.com.news.feature.newslist.NewsListViewModel
 import news.ta.com.news.services.HackerNewsService
 import news.ta.com.news.services.NewsService
@@ -19,4 +21,6 @@ interface ApplicationComponent {
 
     fun inject(newsListViewModel: NewsListViewModel)
     fun inject(newsListViewModel: HackerNewsViewModel)
+    fun inject(hackerNewsItemViewModel: HackerNewsItemViewModel)
+    fun inject(hackerNewsDetailViewModel: HackerNewsDetailViewModel)
 }

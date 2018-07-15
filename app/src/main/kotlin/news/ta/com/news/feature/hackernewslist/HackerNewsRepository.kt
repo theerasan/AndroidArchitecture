@@ -2,6 +2,7 @@ package news.ta.com.news.feature.hackernewslist
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import news.ta.com.news.feature.NewsApplication
 import news.ta.com.news.model.HackerNewsDTO
 import news.ta.com.news.services.enqueueWithProcessing
@@ -24,8 +25,8 @@ class HackerNewsRepositoryImpl: HackerNewsRepository {
                 success = {
                     items.value = it
                 },
-                fail = {_, _ ->
-
+                fail = { _, t ->
+                    Log.w(this.javaClass.name, t?.message ?: "")
                 }
         )
 
@@ -53,12 +54,14 @@ class HackerNewsRepositoryImpl: HackerNewsRepository {
 
 private fun HackerNewsDTO.convertToHackerNewsItem(): HackerNewsItem {
     return HackerNewsItem(id = this.id ?: 0,
-            idTemp = this.id?.toString() ?: "",
-            text = this.text ?: "")
+            text = this.text,
+            by = this.by,
+            title= this.title,
+            commentCount = this.comment,
+            list = this.kids?.map { it.convertToHackerNewsItem() })
 }
 
 private fun Int.convertToHackerNewsItem(): HackerNewsItem {
-    return HackerNewsItem(id = this,
-            idTemp = this.toString())
+    return HackerNewsItem(id = this)
 }
 

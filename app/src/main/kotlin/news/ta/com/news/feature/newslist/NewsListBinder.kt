@@ -24,4 +24,6 @@ class NewsListBinder(fragment: Fragment, binding: FragmentNewsListBinding) {
         viewModel.showDetailMediator.observe(owner, Observer { router.showDetail(detailViewModel, it) })
         viewModel.gotoDetailMediator.observe(owner, Observer { router.gotoDetail(it) })
     }
+
+    private fun doNothing() { }
 }

@@ -12,25 +12,35 @@
         <item name="android:navigationBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+        <item name="android:fontFamily">@font/sfcompact_display_regular</item>
         <item name="android:windowContentTransitions" tools:ignore="NewApi">true</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_up</item>
     </style>
 
     <style name="News.Title" parent="@style/Base.TextAppearance.AppCompat.Headline">
-        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+        <item name="android:fontFamily">@font/sfcompact_display_regular</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="News.Body" parent="@style/Base.TextAppearance.AppCompat.Body1">
-        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+        <item name="android:fontFamily">@font/sfcompact_display_regular</item>
     </style>
 
     <style name="News.Caption" parent="@style/Base.TextAppearance.AppCompat.Caption">
-        <item name="android:fontFamily">@font/averia_serif_libre_light</item>
+        <item name="android:fontFamily">@font/sfcompact_display_regular</item>
     </style>
 
     <style name="News.Appbar">
         <item name="android:background">@drawable/title_bg</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -28,7 +28,7 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<N
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], position)
     }
 
     override fun getItemId(position: Int): Long = items[position].id.toLong()
@@ -36,7 +36,7 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<N
     inner class NewsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         val binding: ItemNewsBinding? = itemView?.let { DataBindingUtil.bind(it) }
 
-        fun bind(item: NewsItem) {
+        fun bind(item: NewsItem, position: Int) {
             binding?.item = item
             binding?.listener = View.OnClickListener {
                 viewModel.itemClickEvent.value = item

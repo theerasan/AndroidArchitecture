@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import news.ta.com.news.R
-import news.ta.com.news.databinding.FragmentNewsListBinding
+import news.ta.com.news.databinding.FragmentHackerNewsListBinding
 
 class HackerNewListFragment: Fragment() {
 
@@ -18,7 +18,7 @@ class HackerNewListFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: FragmentNewsListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_news_list, container, false)
+        val binding: FragmentHackerNewsListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_hacker_news_list, container, false)
         binder = HackerNewsListBinder(this, binding)
         return binding.root
     }

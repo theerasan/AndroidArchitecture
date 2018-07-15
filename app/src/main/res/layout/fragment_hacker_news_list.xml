@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="news.ta.com.news.feature.hackernewslist.HackerNewsViewModel" />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isRefreshing="@{viewModel.refreshing}"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:onRefresh="@{viewModel.onSwipeRefreshLayout}">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_hacker_news" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</layout>

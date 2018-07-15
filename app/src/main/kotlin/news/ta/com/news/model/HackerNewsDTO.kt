@@ -26,5 +26,11 @@ class HackerNewsDTO {
     @SerializedName("type")
     @Expose
     var type: String? = null
+    @SerializedName("descendants")
+    @Expose
+    var comment: Int? = 0
+    @SerializedName("title")
+    @Expose
+    var title: String? = ""
 
 }

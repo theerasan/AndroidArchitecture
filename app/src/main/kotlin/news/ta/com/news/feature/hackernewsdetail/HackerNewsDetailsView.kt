@@ -1,22 +1,26 @@
-package news.ta.com.news.feature.hackernewslist
+package news.ta.com.news.feature.hackernewsdetail
 
-import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.dgreenhalgh.android.simpleitemdecoration.linear.DividerItemDecoration
 import com.dgreenhalgh.android.simpleitemdecoration.linear.EndOffsetItemDecoration
 import com.dgreenhalgh.android.simpleitemdecoration.linear.StartOffsetItemDecoration
 import news.ta.com.news.R
-import news.ta.com.news.databinding.FragmentHackerNewsListBinding
+import news.ta.com.news.databinding.ActivityHackerNewDetailsBinding
+import news.ta.com.news.feature.hackernewslist.HackerNewsItem
+import news.ta.com.news.feature.hackernewslist.HackerNewsViewModel
 
-interface HackersNewsListView {
+interface HackerNewsDetailsView {
     fun setItem(items: List<HackerNewsItem>?)
 }
 
-class HackersNewsListViewImpl(fragment: Fragment, val binding: FragmentHackerNewsListBinding, viewModel: HackerNewsViewModel) : HackersNewsListView {
+class HackerNewsDetailsViewImpl(val binding: ActivityHackerNewDetailsBinding?,
+                                private val shareViewModel: HackerNewsViewModel,
+                                val activity: FragmentActivity) : HackerNewsDetailsView {
 
     init {
-        with(binding.list) {
+        with(binding!!.list) {
             isNestedScrollingEnabled = false
 
             val pixelSize = context.resources.getDimensionPixelSize(R.dimen.gap_m)
@@ -29,11 +33,11 @@ class HackersNewsListViewImpl(fragment: Fragment, val binding: FragmentHackerNew
 
             layoutManager = LinearLayoutManager(context)
 
-            adapter = HackerNewsListAdapter(viewModel, fragment.activity!!)
+            adapter = HackerNewsKidsAdapter(shareViewModel, activity)
         }
     }
 
     override fun setItem(items: List<HackerNewsItem>?) {
-        (binding.list.adapter as HackerNewsListAdapter).items = items ?: emptyList()
+        (binding!!.list.adapter as HackerNewsKidsAdapter).items = items ?: emptyList()
     }
 }

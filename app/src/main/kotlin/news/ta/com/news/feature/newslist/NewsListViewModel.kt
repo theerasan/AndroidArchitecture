@@ -32,8 +32,8 @@ class NewsListViewModel : ViewModel() {
 
     init {
         NewsApplication.applicationComponent.inject(this)
-        showDetailMediator.addSource(itemClickEvent, { if (hasDetailView) showDetailMediator.value = it })
-        gotoDetailMediator.addSource(itemClickEvent, { if (!hasDetailView) gotoDetailMediator.value = it; afterGotoDetail() })
+        showDetailMediator.addSource(itemClickEvent) { if (hasDetailView) showDetailMediator.value = it }
+        gotoDetailMediator.addSource(itemClickEvent) { if (!hasDetailView) gotoDetailMediator.value = it; afterGotoDetail() }
     }
 
     private fun afterGotoDetail() {

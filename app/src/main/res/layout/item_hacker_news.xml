@@ -7,11 +7,15 @@
 
         <variable
             name="item"
-            type="news.ta.com.news.feature.hackernewslist.HackerNewsItem"/>
+            type="news.ta.com.news.feature.hackernewslist.HackerNewsItem" />
+
+        <variable
+            name="viewModel"
+            type="news.ta.com.news.feature.hackernewslist.hackernewsitem.HackerNewsItemViewModel" />
 
         <variable
             name="listener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -23,28 +27,54 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{listener}"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/gap_m"
-        android:paddingLeft="@dimen/gap_m"
-        android:paddingRight="@dimen/gap_m"
-        android:paddingStart="@dimen/gap_m">
+        android:padding="@dimen/gap_m">
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="50dp"
+            app:show="@{viewModel.loading}" />
+
 
         <TextView
             style="@style/News.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@{item.text}"
-            tools:text="Headline"/>
+            app:htmlString="@{viewModel.topic.title}"
+            app:show="@{!viewModel.loading}"
+            tools:text="Headline" />
 
-        <TextView
-            style="@style/News.Body"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@{item.idTemp}"
-            tools:text="Headline"/>
+            android:orientation="horizontal"
+            app:show="@{!viewModel.loading}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_by" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.topic.by}" />
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="@dimen/gap_m"
+                android:layout_marginLeft="@dimen/gap_s"
+                android:layout_marginRight="@dimen/gap_s"
+                android:background="@color/line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:rawValue="@{viewModel.topic.commentCount}"
+                app:stringFormatRes="@{@plurals/comments}" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="news.ta.com.news.feature.hackernewsdetail.HackerNewsDetailViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    style="@style/News.Appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="none"
+                    app:title="@{viewModel.item.title}"
+                    app:titleTextColor="@color/white"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    tools:title="news" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:orientation="vertical"
+                    android:padding="@dimen/gap_m">
+
+                    <TextView
+                        style="@style/News.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:htmlString="@{viewModel.item.text}"
+                        tools:text="Headline" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/common_by" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.item.by}" />
+
+                        <View
+                            android:layout_width="@dimen/line"
+                            android:layout_height="@dimen/gap_m"
+                            android:layout_marginLeft="@dimen/gap_s"
+                            android:layout_marginRight="@dimen/gap_s"
+                            android:background="@color/line" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:rawValue="@{viewModel.item.commentCount}"
+                            app:stringFormatRes="@{@plurals/comments}" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/line"/>
+        </FrameLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

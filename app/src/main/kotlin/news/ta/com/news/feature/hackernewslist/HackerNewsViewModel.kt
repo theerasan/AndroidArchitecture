@@ -7,7 +7,6 @@ import android.databinding.ObservableBoolean
 import android.support.v4.widget.SwipeRefreshLayout
 import news.ta.com.news.common.livedata.SingleLiveEvent
 import news.ta.com.news.feature.NewsApplication
-import news.ta.com.news.feature.newslist.NewsItem
 import javax.inject.Inject
 
 class HackerNewsItem(var id: Int = 0,
@@ -25,7 +24,7 @@ class HackerNewsViewModel: ViewModel() {
             get() = repository.getNews()
 
 
-    val itemMediator = MediatorLiveData<List<NewsItem>>()
+    val itemMediator = MediatorLiveData<List<HackerNewsItem>>()
 
     val refreshing = ObservableBoolean(false)
 

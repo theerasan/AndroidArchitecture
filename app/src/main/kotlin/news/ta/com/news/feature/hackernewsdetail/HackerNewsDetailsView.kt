@@ -21,7 +21,7 @@ class HackerNewsDetailsViewImpl(val binding: ActivityHackerNewDetailsBinding?,
 
     init {
         with(binding!!.list) {
-            isNestedScrollingEnabled = false
+            isNestedScrollingEnabled = true
 
             val pixelSize = context.resources.getDimensionPixelSize(R.dimen.gap_m)
             addItemDecoration(StartOffsetItemDecoration(pixelSize))

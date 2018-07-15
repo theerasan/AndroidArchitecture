@@ -33,6 +33,12 @@ class HackerNewsDetailActivity: AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hacker_new_details)
         binder = HackerNewsActivityBinder(this, binding)
         binder?.bindTo(this)
+
+        binding?.toolbar?.let {
+            setSupportActionBar(it)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

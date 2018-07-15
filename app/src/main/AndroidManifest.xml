@@ -21,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".feature.newsdetail.NewsDetailActivity"
-            android:theme="@style/News"></activity>
+
         <activity
             android:name=".feature.hackernewsdetail.HackerNewsDetailActivity"
             android:theme="@style/News" />
@@ -32,10 +30,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

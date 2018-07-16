@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
+import android.support.annotation.VisibleForTesting
 import android.support.v4.widget.SwipeRefreshLayout
 import news.ta.com.news.common.livedata.SingleLiveEvent
 import news.ta.com.news.feature.NewsApplication
@@ -16,12 +17,12 @@ class HackerNewsItem(var id: Int = 0,
                      var text: String? = "",
                      var list: List<HackerNewsItem>? = emptyList())
 
-class HackerNewsViewModel: ViewModel() {
+class HackerNewsViewModel : ViewModel() {
     @Inject
     lateinit var repository: HackerNewsRepository
 
     val items: LiveData<List<HackerNewsItem>>
-            get() = repository.getNews()
+        get() = repository.getNews()
 
 
     val itemMediator = MediatorLiveData<List<HackerNewsItem>>()
@@ -32,9 +33,15 @@ class HackerNewsViewModel: ViewModel() {
 
     val itemClickEvent = SingleLiveEvent<HackerNewsItem>()
 
+
     init {
         NewsApplication.applicationComponent.inject(this)
-        itemMediator.addSource(items) { it?.let { refreshing.set(false) }}
+        itemMediator.addSource(items) { onGetNewData(it) }
+    }
+
+    @VisibleForTesting
+    internal fun onGetNewData(data: List<HackerNewsItem>?) {
+        data?.let { refreshing.set(false) }
     }
 
     private fun onRefresh() {

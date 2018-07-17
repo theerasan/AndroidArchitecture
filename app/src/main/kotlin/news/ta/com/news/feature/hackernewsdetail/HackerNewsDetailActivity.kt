@@ -10,7 +10,7 @@ import android.view.Window
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ActivityHackerNewDetailsBinding
 
-class HackerNewsDetailActivity: AppCompatActivity() {
+class HackerNewsDetailActivity : AppCompatActivity() {
 
     var binding: ActivityHackerNewDetailsBinding? = null
     var binder: HackerNewsActivityBinder? = null
@@ -45,5 +45,4 @@ class HackerNewsDetailActivity: AppCompatActivity() {
         onBackPressed()
         return true
     }
-
 }

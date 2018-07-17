@@ -2,6 +2,7 @@ package news.ta.com.news.feature.hackernewslist
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.support.annotation.VisibleForTesting
 import android.util.Log
 import news.ta.com.news.feature.NewsApplication
 import news.ta.com.news.model.HackerNewsDTO
@@ -12,9 +13,11 @@ interface HackerNewsRepository {
     fun getNewsDetail(id: Int): LiveData<HackerNewsItem>
 }
 
-class HackerNewsRepositoryImpl: HackerNewsRepository {
+class HackerNewsRepositoryImpl : HackerNewsRepository {
 
+    @VisibleForTesting
     var service = NewsApplication.applicationComponent.getHackerNewsService()
+
     private val items = MutableLiveData<List<HackerNewsItem>>()
 
     override fun getNews(): LiveData<List<HackerNewsItem>> {
@@ -43,8 +46,7 @@ class HackerNewsRepositoryImpl: HackerNewsRepository {
                 success = {
                     items.value = it
                 },
-                fail = {_, _ ->
-
+                fail = { _, _ ->
                 }
         )
 
@@ -52,7 +54,8 @@ class HackerNewsRepositoryImpl: HackerNewsRepository {
     }
 }
 
-private fun HackerNewsDTO.convertToHackerNewsItem(): HackerNewsItem {
+@VisibleForTesting
+internal fun HackerNewsDTO.convertToHackerNewsItem(): HackerNewsItem {
     return HackerNewsItem(id = this.id ?: 0,
             text = this.text,
             by = this.by,
@@ -61,7 +64,8 @@ private fun HackerNewsDTO.convertToHackerNewsItem(): HackerNewsItem {
             list = this.kids?.map { it.convertToHackerNewsItem() })
 }
 
-private fun Int.convertToHackerNewsItem(): HackerNewsItem {
+@VisibleForTesting
+internal fun Int.convertToHackerNewsItem(): HackerNewsItem {
     return HackerNewsItem(id = this)
 }
 

@@ -32,5 +32,4 @@ class HackerNewsDTO {
     @SerializedName("title")
     @Expose
     var title: String? = ""
-
 }

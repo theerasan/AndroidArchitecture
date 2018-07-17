@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.FragmentHackerNewsListBinding
 
-class HackerNewListFragment: Fragment() {
+class HackerNewListFragment : Fragment() {
 
     private lateinit var binder: HackerNewsListBinder
 

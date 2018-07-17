@@ -12,7 +12,6 @@ import news.ta.com.news.feature.hackernewslist.HackerNewsViewModel
 
 class HackerNewsActivityBinder(activity: AppCompatActivity, val binding: ActivityHackerNewDetailsBinding?) {
 
-
     val id = activity.intent.getIntExtra(EXTRA_NEWS_ID, 0)
 
     val viewModel = ViewModelProviders.of(activity, HackerNewsDetailViewModelFactory(id))

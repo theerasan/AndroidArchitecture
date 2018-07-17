@@ -21,7 +21,6 @@ class HackerNewsItemTest {
 
     @Test
     fun initHackerNewsItemGetWithData() {
-
         val mockInt = 3
         val mockString = "String"
         val mockList = mock<List<HackerNewsItem>>()

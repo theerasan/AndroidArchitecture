@@ -24,7 +24,6 @@ class HackerNewsViewModel : ViewModel() {
     val items: LiveData<List<HackerNewsItem>>
         get() = repository.getNews()
 
-
     val itemMediator = MediatorLiveData<List<HackerNewsItem>>()
 
     val refreshing = ObservableBoolean(false)
@@ -32,7 +31,6 @@ class HackerNewsViewModel : ViewModel() {
     val onSwipeRefreshLayout = SwipeRefreshLayout.OnRefreshListener { onRefresh() }
 
     val itemClickEvent = SingleLiveEvent<HackerNewsItem>()
-
 
     init {
         NewsApplication.applicationComponent.inject(this)

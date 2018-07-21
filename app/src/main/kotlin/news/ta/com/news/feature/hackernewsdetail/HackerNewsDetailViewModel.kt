@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import android.support.annotation.VisibleForTesting
 import news.ta.com.news.feature.NewsApplication
 import news.ta.com.news.feature.hackernewslist.HackerNewsItem
 import news.ta.com.news.feature.hackernewslist.HackerNewsRepository
@@ -14,7 +15,7 @@ class HackerNewsDetailViewModel(val id: Int) : ViewModel() {
     @Inject
     lateinit var repository: HackerNewsRepository
 
-    private val itemData: LiveData<HackerNewsItem>
+    val itemData: LiveData<HackerNewsItem>
         get() = repository.getNewsDetail(id)
 
     val item = ObservableField<HackerNewsItem>()
@@ -23,14 +24,17 @@ class HackerNewsDetailViewModel(val id: Int) : ViewModel() {
 
     init {
         NewsApplication.applicationComponent.inject(this)
-        itemMediator.addSource(itemData) {
-            it?.let {
-                if (it.commentCount == 0) {
-                    it.commentCount = it.list?.size
-                }
-                item.set(it)
+        itemMediator.addSource(itemData) { onGetData(it) }
+    }
+
+    @VisibleForTesting
+    internal fun onGetData(it: HackerNewsItem?) {
+        it?.let {
+            if (it.commentCount == 0) {
+                it.commentCount = it.list?.size
             }
-            itemMediator.value = it
+            item.set(it)
         }
+        itemMediator.value = it
     }
 }

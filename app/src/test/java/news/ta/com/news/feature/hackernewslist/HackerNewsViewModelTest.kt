@@ -75,6 +75,10 @@ class HackerNewsViewModelTest {
     @Test
     fun `case-6 initial variable are not null`() {
         val vm = HackerNewsViewModel()
+        val liveData = mock<LiveData<List<HackerNewsItem>>>()
+        Mockito.`when`(vm.repository.getNews()).thenReturn(liveData)
+
+        vm.items `should not be` null
         vm.itemMediator `should not be` null
         vm.repository `should not be` null
         vm.refreshing `should not be` null

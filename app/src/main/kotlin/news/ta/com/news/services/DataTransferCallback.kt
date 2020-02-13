@@ -1,13 +1,10 @@
 package news.ta.com.news.services
 
-import androidx.lifecycle.MutableLiveData
+import com.google.gson.JsonSyntaxException
 import com.google.gson.annotations.SerializedName
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.Deferred
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
-import news.ta.com.news.common.coroutines.Android
+import news.ta.com.news.services.DataTransferCallback.Companion.ioScope
+import news.ta.com.news.services.DataTransferCallback.Companion.mainScope
+import kotlinx.coroutines.*
 import news.ta.com.news.feature.NewsApplication
 import okhttp3.Headers
 import retrofit2.Call
@@ -15,49 +12,82 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 import java.io.InterruptedIOException
+import java.lang.Exception
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 data class ErrorBody(
-        @SerializedName("errorType")
-        val errorType: String,
-        @SerializedName("errors")
-        val errors: List<ErrorItem>
+        @SerializedName("error")
+        val error: String
 )
 
 data class ErrorItem(
         @SerializedName("code")
         val code: String,
-        @SerializedName("message")
+        @SerializedName("text")
         val message: String
 )
 
-class DataTransferCallback<T>(private val success: (T?) -> Unit,
-                              private val successHeaders: ((Headers?) -> Unit)? = null,
-                              private val fail: ((ResponseType, Throwable?) -> Unit)?) : Callback<T> {
+class DataTransferCallback<T>(
+        private val success: (T?) -> Unit,
+        private val headers: ((Headers?) -> Unit)? = null,
+        private val fail: ((ResponseType, Throwable?) -> Unit)?
+) : Callback<T> {
+
+    companion object {
+        val ioScope = CoroutineScope(Dispatchers.IO)
+        val mainScope = CoroutineScope(Dispatchers.Main)
+    }
 
     private val gson = NewsApplication.applicationComponent.getGson()
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
-        when (response?.code()) {
-            in 200..399 -> {
-                success.invoke(response?.body())
-                successHeaders?.invoke(response?.headers())
-            }
-            401 -> fail?.invoke(ResponseType.UNAUTHORIZED, null)
-            503 -> fail?.invoke(ResponseType.EMPTY, null)
-            504 -> fail?.invoke(ResponseType.TIMEOUT, null)
-            404 -> fail?.invoke(ResponseType.NOT_FOUND, null)
+        headers?.invoke(response?.headers())
 
+        when (response?.code()) {
+            in 200..399 -> success.invoke(response?.body())
+            401 -> {
+                val errorBody = getErrorBody(response)
+                val throwable = getThrowable(errorBody)
+                fail?.invoke(ResponseType.UNAUTHORIZED, throwable)
+            }
+            503 -> fail?.invoke(ResponseType.EMPTY, null)
+            502, 504 -> fail?.invoke(ResponseType.TIMEOUT, null)
+            404 -> {
+                val errorBody = getErrorBody(response)
+                val throwable = getThrowable(errorBody)
+                fail?.invoke(ResponseType.NOT_FOUND, throwable)
+            }
             else -> {
-                val errorResponse = response?.errorBody()?.string()
-                val errorBody: ErrorBody = gson.fromJson(errorResponse, ErrorBody::class.java)
-                with(errorBody) {
-                    val throwable = Throwable(errorType, Throwable(errors[0].message))
-                    fail?.invoke(ResponseType.GENERAL_ERROR, throwable)
-                }
+                handleError(response)
+                fail?.invoke(ResponseType.GENERAL_ERROR, null)
             }
         }
+    }
+
+    private fun handleError(response: Response<T>?) {
+        try {
+            val errorBody = getErrorBody(response)
+            val throwable = getThrowable(errorBody)
+            fail?.invoke(ResponseType.GENERAL_ERROR, throwable)
+        } catch (e: JsonSyntaxException) {
+            e.printStackTrace()
+            fail?.invoke(ResponseType.NOT_FOUND, null)
+        }
+    }
+
+    private fun getErrorBody(response: Response<T>?): ErrorBody? {
+        return try {
+            val errorResponse = response?.errorBody()?.string()
+            gson.fromJson(errorResponse, ErrorBody::class.java)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun getThrowable(errorBody: ErrorBody?): Throwable? {
+        val message = errorBody?.error
+        return Throwable(message)
     }
 
     override fun onFailure(call: Call<T>?, throwable: Throwable?) {
@@ -75,39 +105,40 @@ class DataTransferCallback<T>(private val success: (T?) -> Unit,
     }
 }
 
+fun <T> Call<T>.processEnqueue(
+        success: (T?) -> Unit,
+        headers: ((Headers?) -> Unit)? = null,
+        fail: ((ResponseType, Throwable?) -> Unit)? = null
+) {
+    try {
+        enqueue(DataTransferCallback<T>(success, headers, fail))
+    } catch (e: IOException) {
+    }
+}
+
+fun <T> Call<T>.enqueueNow() {
+    this.enqueueWithProcessing({}, {})
+}
+
 fun <T, O> Call<T>.enqueueWithProcessing(
         preProcessing: (T?) -> O,
         success: (O?) -> Unit,
-        successHeaders: ((Headers?) -> Unit)? = null,
-        fail: (ResponseType, Throwable?) -> Unit) {
+        headers: ((Headers?) -> Unit)? = null,
+        fail: ((ResponseType, Throwable?) -> Unit)? = null
+) {
 
-    fun backgroundProcessing(obj: T?): Deferred<O> {
-        return async(CommonPool) {
+    fun backgroundProcessingAsync(obj: T?): Deferred<O> {
+        return ioScope.async {
             return@async preProcessing(obj)
         }
     }
 
     val wrappedSuccess: (T?) -> Unit = {
-        launch(Android) {
-            val obj = backgroundProcessing(it).await()
+        mainScope.launch {
+            val obj = backgroundProcessingAsync(it).await()
             success.invoke(obj)
         }
     }
 
-    this.enqueue(DataTransferCallback<T>(wrappedSuccess, successHeaders, fail))
+    processEnqueue(wrappedSuccess, headers, fail)
 }
-
-fun <T> MutableLiveData<T>.setValueAsync(background: (T?) -> T): Job {
-    fun doInBackground(): Deferred<T> {
-        return async(CommonPool) {
-            background.invoke(this@setValueAsync.value)
-        }
-    }
-
-    val job = launch(Android) {
-        this@setValueAsync.value = doInBackground().await()
-    }
-
-    return job
-}
-

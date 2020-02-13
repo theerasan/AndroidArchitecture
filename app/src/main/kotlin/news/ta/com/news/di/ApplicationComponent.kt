@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import dagger.Component
 import news.ta.com.news.feature.newslist.NewsListViewModel
 import news.ta.com.news.services.NewsService
-import news.ta.com.news.slice.NewsSlice
 import javax.inject.Singleton
 
 @Singleton
@@ -15,5 +14,4 @@ interface ApplicationComponent {
     fun getGson(): Gson
 
     fun inject(newsListViewModel: NewsListViewModel)
-    fun inject(newsListViewModel: NewsSlice)
 }

@@ -1,16 +1,16 @@
 package news.ta.com.news.feature.newslist
 
+import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.fragment.app.Fragment
 import news.ta.com.news.databinding.FragmentNewsListBinding
 import news.ta.com.news.feature.newsdetail.NewsDetailsViewModel
 
 class NewsListBinder(fragment: Fragment, binding: FragmentNewsListBinding) {
 
-    val viewModel: NewsListViewModel = ViewModelProviders.of(fragment.activity!!).get(NewsListViewModel::class.java)
-    val detailViewModel = ViewModelProviders.of(fragment.activity!!).get(NewsDetailsViewModel::class.java)
+    val viewModel: NewsListViewModel by fragment.activity!!.viewModels()
+    val detailViewModel: NewsDetailsViewModel by fragment.activity!!.viewModels()
     val view: NewsListView
     val router: NewsListRouter = NewsListRouterImpl(binding.root.context)
 

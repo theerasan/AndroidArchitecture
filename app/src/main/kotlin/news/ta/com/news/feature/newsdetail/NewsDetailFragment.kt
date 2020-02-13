@@ -12,7 +12,7 @@ import news.ta.com.news.databinding.FragmentNewsDetailsBinding
 class NewsDetailFragment : Fragment() {
     private lateinit var binder: NewsDetailBinder
     companion object {
-        fun newInstance(): androidx.fragment.app.Fragment = NewsDetailFragment()
+        fun newInstance(): Fragment = NewsDetailFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

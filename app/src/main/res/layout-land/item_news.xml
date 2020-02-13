@@ -24,15 +24,14 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UnusedAttribute">
 
         <ImageView
             android:layout_width="@dimen/imageSize"
             android:layout_height="@dimen/imageSize"
             android:layout_marginStart="@dimen/gap_none"
-            android:layout_marginLeft="@dimen/gap_none"
             android:layout_marginEnd="@dimen/gap_m"
-            android:layout_marginRight="@dimen/gap_m"
             android:background="@color/color_places_holder"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_news"

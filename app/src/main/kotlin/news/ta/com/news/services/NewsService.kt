@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface NewsService {
     @GET("v2/top-headlines")
-    fun getTopNewsList(@Query("country") country: String? = "us"): Call<NewsDTO>
+    fun getTopNewsList(@Query("country") country: String? = "th"): Call<NewsDTO>
 }

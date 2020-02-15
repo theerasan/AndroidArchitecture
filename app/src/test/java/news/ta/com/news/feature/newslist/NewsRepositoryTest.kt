@@ -5,11 +5,7 @@ import com.nhaarman.mockito_kotlin.verify
 import news.ta.com.news.model.ArticleDTO
 import news.ta.com.news.model.NewsDTO
 import news.ta.com.news.services.NewsService
-import org.amshove.kluent.mock
-import org.amshove.kluent.shouldBe
-import org.amshove.kluent.shouldEqual
-import org.amshove.kluent.shouldEqualTo
-import org.amshove.kluent.shouldNotBe
+import org.amshove.kluent.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -31,7 +27,7 @@ class NewsRepositoryTest {
     @Test
     fun `case-02 when repository call getNews, service should call getTopNews with 'us'`() {
         val repository = NewsRepositoryImpl(service)
-        Mockito.`when`(repository.service.getTopNewsList("us")).thenReturn(mock())
+        Mockito.`when`(service.getTopNewsList(any())).thenReturn(mock())
         repository.getNews()
         verify(repository.service.getTopNewsList("us"))
     }

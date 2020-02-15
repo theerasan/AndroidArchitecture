@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import news.ta.com.news.R
 import news.ta.com.news.databinding.FragmentNewsDetailsBinding
+import org.koin.android.scope.currentScope
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class NewsDetailFragment : Fragment() {
     private lateinit var binder: NewsDetailBinder
@@ -17,7 +20,10 @@ class NewsDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentNewsDetailsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_news_details, container, false)
-        binder = NewsDetailBinder(activity!!, binding)
+        val module = NewsDetailModule().getModule(this.activity!!, binding)
+        unloadKoinModules(module)
+        loadKoinModules(module)
+        binder = currentScope.get()
         return binding.root
     }
 

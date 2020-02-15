@@ -9,7 +9,6 @@ import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-@Suppress("NAME_SHADOWING")
 class NewsListModule {
     fun getModule(fragment: Fragment, binding: FragmentNewsListBinding): Module = module {
         scope(named<NewsListFragment>()) {

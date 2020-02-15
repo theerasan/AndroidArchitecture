@@ -8,8 +8,6 @@ import androidx.lifecycle.ViewModel
 import news.ta.com.news.common.livedata.SingleLiveEvent
 import news.ta.com.news.feature.NewsApplication
 import java.io.Serializable
-import javax.inject.Inject
-
 class NewsItem(val id: Int = 0,
                val thumbnail: String = "",
                val headline: String = "--",
@@ -17,10 +15,7 @@ class NewsItem(val id: Int = 0,
                val link: String = "",
                val source: String = "--") : Serializable
 
-class NewsListViewModel : ViewModel() {
-
-    @Inject
-    lateinit var repository: NewsRepository
+class NewsListViewModel(private val repository: NewsRepository) : ViewModel() {
 
     val itemClickEvent = SingleLiveEvent<NewsItem>()
 
@@ -35,7 +30,6 @@ class NewsListViewModel : ViewModel() {
     val selectedCount = ObservableField<String>("0")
 
     init {
-        NewsApplication.applicationComponent.inject(this)
         showDetailMediator.addSource(itemClickEvent) { if (hasDetailView) showDetailMediator.value = it }
         gotoDetailMediator.addSource(itemClickEvent) { if (!hasDetailView) gotoDetailMediator.value = it; afterGotoDetail() }
     }

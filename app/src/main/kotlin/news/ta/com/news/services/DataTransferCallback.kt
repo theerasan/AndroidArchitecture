@@ -1,5 +1,6 @@
 package news.ta.com.news.services
 
+import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.annotations.SerializedName
 import news.ta.com.news.services.DataTransferCallback.Companion.ioScope
@@ -7,6 +8,8 @@ import news.ta.com.news.services.DataTransferCallback.Companion.mainScope
 import kotlinx.coroutines.*
 import news.ta.com.news.feature.NewsApplication
 import okhttp3.Headers
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,14 +35,14 @@ class DataTransferCallback<T>(
         private val success: (T?) -> Unit,
         private val headers: ((Headers?) -> Unit)? = null,
         private val fail: ((ResponseType, Throwable?) -> Unit)?
-) : Callback<T> {
+) : Callback<T>, KoinComponent {
 
     companion object {
         val ioScope = CoroutineScope(Dispatchers.IO)
         val mainScope = CoroutineScope(Dispatchers.Main)
     }
 
-    private val gson = NewsApplication.applicationComponent.getGson()
+    private val gson:Gson by inject()
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
         headers?.invoke(response?.headers())

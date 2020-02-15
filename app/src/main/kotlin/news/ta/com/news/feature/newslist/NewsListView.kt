@@ -26,7 +26,11 @@ interface NewsListView {
 class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding) : NewsListView {
 
     init {
-        val hasDetailView = fragment.arguments!!.getBoolean(HAS_DETAIL, false)
+        var hasDetailView = false
+        fragment.arguments?.let {
+            hasDetailView = it.getBoolean(HAS_DETAIL, false)
+        }
+
         with(binding.list) {
             isNestedScrollingEnabled = false
 

@@ -11,9 +11,8 @@ interface NewsRepository {
     fun getNews(): LiveData<List<NewsItem>>
 }
 
-class NewsRepositoryImpl : NewsRepository {
+class NewsRepositoryImpl(val service: NewsService) : NewsRepository {
 
-    var service: NewsService = NewsApplication.applicationComponent.getNewsService()
     var items = MutableLiveData<List<NewsItem>>()
 
     override fun getNews(): LiveData<List<NewsItem>> {

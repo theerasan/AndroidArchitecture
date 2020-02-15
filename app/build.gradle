@@ -81,6 +81,10 @@ dependencies {
 
     // Kotlin binding
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation "org.koin:koin-core:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     // Image loader
     implementation 'com.github.bumptech.glide:glide:4.9.0'
@@ -104,7 +108,6 @@ dependencies {
 
     // Other Library
     implementation 'com.bignerdranch.android:simple-item-decoration:1.0.0'
-
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
     testImplementation 'org.amshove.kluent:kluent:1.30'

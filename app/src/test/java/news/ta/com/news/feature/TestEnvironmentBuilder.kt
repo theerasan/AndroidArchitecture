@@ -1,7 +1,6 @@
 package news.ta.com.news.feature
 
 import android.content.Context
-import news.ta.com.news.di.ContextModule
 import news.ta.com.news.di.DaggerApplicationComponent
 import news.ta.com.news.di.TestNetworkModule
 import news.ta.com.news.di.TestRepositoryModule

@@ -15,7 +15,7 @@ class NewsItem(val id: Int = 0,
                val link: String = "",
                val source: String = "--") : Serializable
 
-class NewsListViewModel(private val repository: NewsRepository) : ViewModel() {
+class NewsListViewModel(val repository: NewsRepository) : ViewModel() {
 
     val itemClickEvent = SingleLiveEvent<NewsItem>()
 

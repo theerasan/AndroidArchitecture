@@ -1,6 +1,8 @@
 package news.ta.com.news.services
 
+import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import com.google.gson.annotations.SerializedName
 import news.ta.com.news.services.DataTransferCallback.Companion.ioScope
@@ -42,7 +44,10 @@ class DataTransferCallback<T>(
         val mainScope = CoroutineScope(Dispatchers.Main)
     }
 
-    private val gson:Gson by inject()
+    private val gson:Gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+            .setDateFormat("dd-MM-yyyy")
+            .create()
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
         headers?.invoke(response?.headers())

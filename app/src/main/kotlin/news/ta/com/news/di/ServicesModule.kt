@@ -10,5 +10,5 @@ class ServicesModule {
         single { provideNewsService(get()) }
     }
 
-    fun provideNewsService(retrofit: Retrofit): NewsService = retrofit.create(NewsService::class.java)
+    private fun provideNewsService(retrofit: Retrofit): NewsService = retrofit.create(NewsService::class.java)
 }

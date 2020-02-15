@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import javax.inject.Singleton
 
-class NetworkModule {
+open class NetworkModule {
     fun getModule() = module {
         single {
             GsonBuilder()

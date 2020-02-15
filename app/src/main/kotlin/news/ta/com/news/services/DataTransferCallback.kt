@@ -5,13 +5,15 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import news.ta.com.news.services.DataTransferCallback.Companion.ioScope
 import news.ta.com.news.services.DataTransferCallback.Companion.mainScope
-import kotlinx.coroutines.*
-import news.ta.com.news.feature.NewsApplication
 import okhttp3.Headers
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +46,7 @@ class DataTransferCallback<T>(
         val mainScope = CoroutineScope(Dispatchers.Main)
     }
 
-    private val gson:Gson = GsonBuilder()
+    private val gson: Gson = GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
             .setDateFormat("dd-MM-yyyy")
             .create()

@@ -2,10 +2,7 @@ package news.ta.com.news.di
 
 import android.content.Context
 import com.google.gson.FieldNamingPolicy
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import dagger.Module
-import dagger.Provides
 import news.ta.com.news.BuildConfig
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -18,7 +15,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
-import javax.inject.Singleton
 
 open class NetworkModule {
     fun getModule() = module {

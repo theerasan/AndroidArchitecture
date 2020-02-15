@@ -5,8 +5,12 @@ import com.nhaarman.mockito_kotlin.verify
 import news.ta.com.news.model.ArticleDTO
 import news.ta.com.news.model.NewsDTO
 import news.ta.com.news.services.NewsService
-import org.amshove.kluent.*
-import org.junit.Before
+import org.amshove.kluent.any
+import org.amshove.kluent.mock
+import org.amshove.kluent.shouldBe
+import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldEqualTo
+import org.amshove.kluent.shouldNotBe
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule

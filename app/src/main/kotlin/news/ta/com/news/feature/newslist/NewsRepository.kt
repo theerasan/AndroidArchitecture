@@ -2,7 +2,6 @@ package news.ta.com.news.feature.newslist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import news.ta.com.news.feature.NewsApplication
 import news.ta.com.news.model.ArticleDTO
 import news.ta.com.news.services.NewsService
 import news.ta.com.news.services.enqueueWithProcessing

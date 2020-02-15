@@ -22,5 +22,4 @@ class NewsListModule {
             factory<NewsListRouter> { NewsListRouterImpl(fragment.context!!) }
         }
     }
-
 }

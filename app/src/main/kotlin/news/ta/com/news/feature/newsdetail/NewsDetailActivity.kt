@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Window
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ActivityNewsDetailsBinding
-import news.ta.com.news.feature.main.MainModule
 import news.ta.com.news.feature.newslist.NewsItem
 import org.koin.android.scope.currentScope
 import org.koin.core.context.loadKoinModules

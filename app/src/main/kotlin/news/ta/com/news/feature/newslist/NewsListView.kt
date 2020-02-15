@@ -63,7 +63,7 @@ class NewsListViewImpl(fragment: Fragment, val binding: FragmentNewsListBinding)
             }
         }
 
-        binding.viewModel?.hasDetailView = hasDetailView
+        binding.viewModel?.hasViewDetail = hasDetailView
     }
 
     override fun setItems(items: List<NewsItem>?) {

@@ -25,7 +25,7 @@ class NewsListViewModelTest {
     @Test
     fun `case-02 init viewModel - default state of hasDetail should be false`() {
         val viewModel = NewsListViewModel(repository)
-        viewModel.hasDetailView shouldBe false
+        viewModel.hasViewDetail shouldBe false
     }
 
     @Test
@@ -56,7 +56,7 @@ class NewsListViewModelTest {
     fun `case-07 viewModel observe for itemClickEvent when hasDetailView = false, gotoDetailMediator should = item`() {
         val viewModel = NewsListViewModel(repository)
         val newsItem = NewsItem()
-        viewModel.hasDetailView = false
+        viewModel.hasViewDetail = false
         viewModel.gotoDetailMediator.observeForever {
             it shouldEqual newsItem
         }
@@ -66,7 +66,7 @@ class NewsListViewModelTest {
     fun `case-08 viewModel observe for itemClickEvent when hasDetailView = true, showDetailMediator should = item`() {
         val viewModel = NewsListViewModel(repository)
         val newsItem = NewsItem()
-        viewModel.hasDetailView = true
+        viewModel.hasViewDetail = true
         viewModel.showDetailMediator.observeForever {
             it shouldEqual newsItem
         }

@@ -19,7 +19,7 @@ class NewsListViewModel(val repository: NewsRepository) : ViewModel() {
 
     val itemClickEvent = SingleLiveEvent<NewsItem>()
 
-    var hasDetailView = false
+    var hasViewDetail = false
 
     val items: LiveData<List<NewsItem>>
         get() = repository.getNews()
@@ -30,8 +30,8 @@ class NewsListViewModel(val repository: NewsRepository) : ViewModel() {
     val selectedCount = ObservableField<String>("0")
 
     init {
-        showDetailMediator.addSource(itemClickEvent) { if (hasDetailView) showDetailMediator.value = it }
-        gotoDetailMediator.addSource(itemClickEvent) { if (!hasDetailView) gotoDetailMediator.value = it; afterGotoDetail() }
+        showDetailMediator.addSource(itemClickEvent) { if (hasViewDetail) showDetailMediator.value = it }
+        gotoDetailMediator.addSource(itemClickEvent) { if (!hasViewDetail) gotoDetailMediator.value = it; afterGotoDetail() }
     }
 
     @VisibleForTesting

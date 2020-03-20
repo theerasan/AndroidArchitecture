@@ -60,7 +60,6 @@
                     style="@style/News.Caption"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_globe_16"
                     android:drawablePadding="@dimen/gap_s"
                     android:drawableStart="@drawable/ic_globe_16"
                     android:gravity="center_vertical"

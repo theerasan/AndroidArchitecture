@@ -9,10 +9,15 @@ import android.view.Window
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ActivityNewsDetailsBinding
 import news.ta.com.news.feature.newslist.NewsItem
+import org.koin.android.scope.currentScope
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
+import org.koin.core.module.Module
 
 class NewsDetailActivity : AppCompatActivity() {
     var binding: ActivityNewsDetailsBinding? = null
     var binder: NewsDetailActivityBinder? = null
+    var module: Module? = null
 
     companion object {
 
@@ -29,11 +34,22 @@ class NewsDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_ACTION_BAR)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_news_details)
-        binder = NewsDetailActivityBinder(this, binding)
+        module = NewsDetailModule().getModule(this, binding)
+        module?.let {
+            loadKoinModules(it)
+        }
+        binder = currentScope.get()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        module?.let {
+            unloadKoinModules(it)
+        }
     }
 }

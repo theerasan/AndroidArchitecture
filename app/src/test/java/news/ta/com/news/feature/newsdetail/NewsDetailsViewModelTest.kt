@@ -36,7 +36,7 @@ class NewsDetailsViewModelTest {
     }
 
     @Test
-    fun `case-04 init NewsDetailsViewModel the set item perfrom onClick clickReadMoreEvent should change data`() {
+    fun `case-04 init NewsDetailsViewModel the set item perform onClick clickReadMoreEvent should change data`() {
         val viewModel = NewsDetailsViewModel()
         val newsItem = NewsItem(link = Math.random().toString())
         viewModel.clickReadMoreEvent.observeForever { it shouldEqual newsItem.link }
@@ -45,7 +45,7 @@ class NewsDetailsViewModelTest {
     }
 
     @Test
-    fun `case-05 init NewsDetailsViewModel the not set item  and perfrom onClick clickReadMoreEvent = empty`() {
+    fun `case-05 init NewsDetailsViewModel the not set item  and perform onClick clickReadMoreEvent = empty`() {
         val viewModel = NewsDetailsViewModel()
         viewModel.clickReadMoreEvent.observeForever { it shouldEqual "" }
         viewModel.onClickReadMore.onClick(mock())

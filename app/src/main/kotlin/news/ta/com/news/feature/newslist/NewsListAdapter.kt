@@ -5,10 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.selection.SelectionTracker
 import news.ta.com.news.R
 import news.ta.com.news.databinding.ItemNewsBinding
 
-class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
+class NewsListAdapter(val viewModel: NewsListViewModel, var selectionTracker: SelectionTracker<Long>? = null) : RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
 
     var items: List<NewsItem> = emptyList()
         set(value) {
@@ -28,7 +29,7 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<N
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(selectionTracker, items[position])
     }
 
     override fun getItemId(position: Int): Long = items[position].id.toLong()
@@ -36,11 +37,14 @@ class NewsListAdapter(val viewModel: NewsListViewModel) : RecyclerView.Adapter<N
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding: ItemNewsBinding? = itemView.let { DataBindingUtil.bind(it) }
 
-        fun bind(item: NewsItem) {
+        fun bind(selectionTracker: SelectionTracker<Long>?, item: NewsItem) {
             binding?.item = item
             binding?.listener = View.OnClickListener {
                 viewModel.itemClickEvent.value = item
             }
+
+            binding?.wrapper?.isSelected = selectionTracker?.isSelected(item.id.toLong()) ?: false
+            viewModel.selectedCount.set(selectionTracker?.selection?.size().toString())
         }
     }
 }

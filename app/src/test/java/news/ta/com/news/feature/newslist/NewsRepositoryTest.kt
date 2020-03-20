@@ -2,15 +2,15 @@ package news.ta.com.news.feature.newslist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.verify
-import news.ta.com.news.feature.TestEnvironmentBuilder
 import news.ta.com.news.model.ArticleDTO
 import news.ta.com.news.model.NewsDTO
+import news.ta.com.news.services.NewsService
+import org.amshove.kluent.any
 import org.amshove.kluent.mock
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldNotBe
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -20,21 +20,18 @@ class NewsRepositoryTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
-    @Before
-    fun `init applicationComponent`() {
-        TestEnvironmentBuilder.buildEnvironment()
-    }
+    var service: NewsService = mock()
 
     @Test
     fun `case-01 init repository with service`() {
-        val repository = NewsRepositoryImpl()
+        val repository = NewsRepositoryImpl(service)
         repository.service shouldNotBe null
     }
 
     @Test
     fun `case-02 when repository call getNews, service should call getTopNews with 'us'`() {
-        val repository = NewsRepositoryImpl()
-        Mockito.`when`(repository.service.getTopNewsList("us")).thenReturn(mock())
+        val repository = NewsRepositoryImpl(service)
+        Mockito.`when`(service.getTopNewsList(any())).thenReturn(mock())
         repository.getNews()
         verify(repository.service.getTopNewsList("us"))
     }
@@ -48,7 +45,6 @@ class NewsRepositoryTest {
         newsDTO.articles = list
         val item = newsDTO.articles.convertToNewsItem()
 
-        (item is List<NewsItem>) shouldBe true
         item.size shouldEqualTo list.size
     }
 
@@ -76,7 +72,7 @@ class NewsRepositoryTest {
     }
 
     @Test
-    fun `case-6 create NewsItem with input contructer get same data`() {
+    fun `case-6 create NewsItem with input constructor get same data`() {
         val id = Math.random().toInt()
         val string = Math.random().toString()
 

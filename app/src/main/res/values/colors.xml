@@ -4,11 +4,10 @@
     <color name="colorPrimaryDark">#2452b9</color>
     <color name="colorAccent">#ff518d</color>
     <color name="color_places_holder">#c2c6d1</color>
-    <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="headlineBackground">#c5000000</color>
-    <color name="line">#e6e1ec</color>
     <color name="titleEnd">#b923ff</color>
     <color name="titleStart">@color/colorPrimary</color>
+    <color name="selectedBackground">#7d1b61ff</color>
     <color name="list_bg">#f6f4fa</color>
 </resources>

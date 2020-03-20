@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.slice>
+  <slice-core versions="1.0.0-alpha1,1.0.0-alpha2,1.0.0-alpha3,1.0.0-beta01,1.0.0-rc01,1.0.0-rc02,1.0.0,1.1.0-alpha01"/>
+  <slice-builders versions="1.0.0-alpha1,1.0.0-alpha2,1.0.0-alpha3,1.0.0-beta01,1.0.0-rc01,1.0.0-rc02,1.0.0,1.1.0-alpha01"/>
+  <slice-view versions="1.0.0-alpha1,1.0.0-alpha2,1.0.0-alpha3,1.0.0-beta01,1.0.0-rc01,1.0.0-rc02,1.0.0,1.1.0-alpha01"/>
+  <slice-builders-ktx versions="1.0.0-alpha3,1.0.0-alpha4,1.0.0-alpha5,1.0.0-alpha6,1.0.0-alpha07"/>
+</androidx.slice>
